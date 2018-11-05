@@ -1,8 +1,50 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    todos: ['Bangun Tidur'],
+    person: {}
+  }
+
+  addTodo = (newTodo) => {
+    this.setState({
+      todos: this.state.todos.concat(newTodo)
+    })
+  }
+
+  componentDidMount() {
+    axios
+      .get('https://swapi.co/api/people/1')
+      .then(({data}) => {
+        this.setState({
+          person: data
+        })
+      })
+    // this.setState({
+    //   person: await this.getPerson()
+    // })
+  }
+
+
+  // async getPerson() {
+  //   const { data } = await axios.get('https://swapi.co/api/people/1')
+  //   this.setState({
+  //     person: data
+  //   })
+  // }
+
+  getPerson() {
+    return axios
+      .get('https://swapi.co/api/people/1')
+      .then(({data}) => {
+        return data
+      })
+  }
+
   render() {
     return (
       <div className="App">
@@ -20,6 +62,7 @@ class App extends Component {
             Learn React
           </a>
         </header>
+        <button onClick={this.addTodo}>Pencer</button>
       </div>
     );
   }
