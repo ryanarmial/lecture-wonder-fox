@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Async <Home/> Test Snapshot 1`] = `
+<h1>
+  HALO HAAI
+</h1>
+`;
